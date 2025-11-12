@@ -1,0 +1,14 @@
+2025/11/12-10:36:59.857 7440 Recovering log #43
+2025/11/12-10:36:59.865 7440 Delete type=0 #43
+2025/11/12-10:36:59.865 7440 Delete type=3 #40
+2025/11/12-11:56:30.716 7918 Level-0 table #49: started
+2025/11/12-11:56:30.729 7918 Level-0 table #49: 783 bytes OK
+2025/11/12-11:56:30.732 7918 Delete type=0 #47
+2025/11/12-11:56:30.744 7918 Manual compaction at level-0 from '!tables!cybermod_malfunction_table' @ 72057594037927935 : 1 .. '!tables!null' @ 0 : 0; will stop at '!tables!null' @ 39 : 1
+2025/11/12-11:56:30.744 7918 Compacting 1@0 + 1@1 files
+2025/11/12-11:56:30.750 7918 Generated table #50@0: 3 keys, 4332 bytes
+2025/11/12-11:56:30.751 7918 Compacted 1@0 + 1@1 files => 4332 bytes
+2025/11/12-11:56:30.754 7918 compacted to: files[ 0 1 0 0 0 0 0 ]
+2025/11/12-11:56:30.755 7918 Delete type=2 #45
+2025/11/12-11:56:30.755 7918 Delete type=2 #49
+2025/11/12-11:56:30.769 7918 Manual compaction at level-0 from '!tables!null' @ 39 : 1 .. '!tables!null' @ 0 : 0; will stop at (end)
