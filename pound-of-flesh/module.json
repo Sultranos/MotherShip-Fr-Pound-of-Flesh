@@ -1,0 +1,90 @@
+{
+  "id": "pound-of-flesh",
+  "title": "Pound of Flesh - Cybermods pour Mothership-Fr",
+  "description": "Module d'extension pour Mothership-Fr ajoutant les règles de cyberware et slickware du supplément Pound of Flesh. Inclut les mécaniques d'installation, gestion des emplacements, et règles de surcadencement.",
+  "authors": [
+    {
+      "name": "Assistant",
+      "flags": {}
+    }
+  ],
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "13",
+    "maximum": "13"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "mothership-fr",
+        "type": "system",
+        "compatibility": {}
+      }
+    ],
+    "requires": [
+      {
+        "id": "mothership-fr",
+        "type": "system",
+        "compatibility": {
+          "minimum": "1.8.0"
+        }
+      }
+    ]
+  },
+  "esmodules": [
+    "pound-of-flesh.js"
+  ],
+  "styles": [
+    "styles/pound-of-flesh.css"
+  ],
+  "languages": [
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
+    }
+  ],
+  "packs": [
+    {
+      "name": "cyberware-items",
+      "label": "Cyberware",
+      "path": "packs/cyberware-items.db",
+      "type": "Item",
+      "system": "mothership-fr",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "slickware-items", 
+      "label": "Slickware",
+      "path": "packs/slickware-items.db",
+      "type": "Item",
+      "system": "mothership-fr",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "pound-of-flesh-tables",
+      "label": "Tables Pound of Flesh",
+      "path": "packs/pound-of-flesh-tables.db",
+      "type": "RollTable",
+      "system": "mothership-fr",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "url": "",
+  "manifest": "",
+  "download": "",
+  "license": "MIT",
+  "readme": "README.md",
+  "bugs": "https://github.com/example/pound-of-flesh/issues",
+  "changelog": "CHANGELOG.md"
+}

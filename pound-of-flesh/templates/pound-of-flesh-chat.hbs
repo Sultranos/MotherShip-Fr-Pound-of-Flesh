@@ -1,0 +1,85 @@
+{{!-- Template pour les messages de chat de Pound of Flesh dans le style Mothership-Fr --}}
+<div class="mosh" {{#if actor._id}}data-actor-id="{{actor._id}}" {{/if}} {{#if item._id}}data-item-id="{{item._id}}" {{/if}} {{#if tokenId}}data-token-id="{{tokenId}}" {{/if}}>
+  <div class="rollcontainer">
+    <div class="flexrow" style="margin-bottom: 5px;">
+      {{#if (compare 'int' msgHeader.length '>=' 22)}}
+      <div class="rollweaponh1" style="font-size: 0.75rem; padding-top: 7px;">{{{msgHeader}}}</div>
+      {{else}}
+      <div class="rollweaponh1">{{{msgHeader}}}</div>
+      {{/if}}
+      <div style="text-align: right"><img class="roll-image" src="{{{msgImgPath}}}" /></div>
+    </div>
+    
+    {{#if rollResult}}
+    {{{rollResult.outcomeHtml}}}
+    <div class="description" style="margin-bottom: 10px;">
+      <div class="body">
+        {{#if rollResult.isBodyCheck}}
+          {{#if skillBonus}}
+          Vous {{{outcomeVerb}}} {{{comparisonText}}} votre <strong>Corps</strong> plus <strong>{{skillName}}</strong> bonus de compétence.
+          {{else}}
+          Vous {{{outcomeVerb}}} {{{comparisonText}}} votre <strong>Corps</strong>.
+          {{/if}}
+        {{else}}
+          {{#if rollResult.success}}
+            {{#if rollResult.critical}}
+              <span class="high-success">Succès Critique!</span>
+            {{else}}
+              <span class="success">Succès</span>
+            {{/if}}
+          {{else}}
+            {{#if rollResult.criticalFailure}}
+              <span class="high-failure">Échec Critique!</span>
+            {{else}}
+              <span class="failure">Échec</span>
+            {{/if}}
+          {{/if}}
+        {{/if}}
+      </div>
+    </div>
+    {{{rollResult.rollHtml}}}
+    {{/if}}
+    
+    <div class="description" style="margin-bottom: 20px;">
+      <div class="body">
+        {{{flavorText}}}
+        
+        {{#if resultDetails}}
+        <div style="margin-top: 10px;">
+          {{#each resultDetails}}
+          <p><strong>{{this.label}}:</strong> {{this.value}}</p>
+          {{/each}}
+        </div>
+        {{/if}}
+        
+        {{#if needsDesc}}
+        <div style="margin-bottom: 10px;"></div>
+        <div class="grid grid-2col" style="grid-template-columns: 10px 75px auto">
+          <div style="border-bottom:1px solid #999; height: 50%;"></div>
+          <div style="font-size:0.65rem; text-align:center;">DESCRIPTION</div>  
+          <div style="border-bottom:1px solid #999; height: 50%;"></div>
+        </div>
+        <div style="margin-bottom: 10px;"></div>
+        <div class="description">
+          <div class="body">{{{item.system.description}}}</div>
+          {{#if effectDescription}}
+          <div class="body">
+            <br><strong>Effet:</strong>
+            <div style="margin-bottom: 3px;"></div>
+            {{{effectDescription}}}
+          </div>
+          {{/if}}
+        </div>
+        {{/if}}
+        
+        {{#if additionalActions}}
+        <div style="margin-top: 15px;">
+        {{#each additionalActions}}
+        <div style="margin-bottom: 5px;">{{{this}}}</div>
+        {{/each}}
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,161 @@
+{
+  "POUNDOFFLESH": {
+    "ModuleTitle": "Pound of Flesh",
+    "ModuleDescription": "Extension Cyberware et Slickware pour Mothership",
+    
+    "Cyberware": "Cyberware",
+    "Slickware": "Slickware",
+    "Cybermods": "Cybermods",
+    "Slots": "Emplacements",
+    "AvailableSlots": "Emplacements disponibles",
+    "UsedSlots": "Emplacements utilisés",
+    "Used": "Utilisé",
+    "Maximum": "Maximum",
+    "Install": "Installer",
+    "Remove": "Retirer",
+    "Installed": "Installé",
+    "NotInstalled": "Non installé",
+    "Empty": "Vide",
+    
+    "CyberwareSlots": "Emplacements Cyberware",
+    "SlickwareSlots": "Emplacements Slickware",
+    "CyberwareCount": "Cyberware installé",
+    "SlickwareCount": "Slickware installé",
+    
+    "Overclocked": "Surcadencé",
+    "OverclockLevel": "Niveau de surcadencement",
+    "OverclockWarning": "ATTENTION: Personnage surcadencé!",
+    
+    "InstallCyberware": "Installer du Cyberware",
+    "InstallSlickware": "Installer du Slickware",
+    "RemoveCyberware": "Retirer le Cyberware",
+    "RemoveSlickware": "Retirer le Slickware",
+    
+    "Installation": "Installation",
+    "InstallationSuccess": "Installation réussie",
+    "InstallationFailure": "Échec de l'installation",
+    "InstallationCriticalSuccess": "Succès critique d'installation",
+    "InstallationCriticalFailure": "Échec critique d'installation",
+    
+    "BodyRoll": "Jet de Corps",
+    "SanityRoll": "Jet de Santé Mentale",
+    "RollResult": "Résultat du jet",
+    "vs": "contre",
+    
+    "Damage": "Dégâts",
+    "DamageTaken": "Dégâts subis",
+    "Stress": "Stress",
+    "StressGained": "Stress gagné",
+    "StressReduced": "Stress réduit",
+    "SanityLoss": "Perte de Santé Mentale",
+    "SanityReduced": "Sanité réduite",
+    
+    "Malfunction": "Dysfonctionnement",
+    "MalfunctionGained": "Dysfonctionnement acquis",
+    "Mutation": "Mutation",
+    "MutationRoll": "Jet de mutation requis",
+    "PanicRoll": "Jet de panique requis",
+    
+    "ProfessionalInstallation": "Installation professionnelle",
+    "AmateurInstallation": "Installation amateur",
+    "InstallationBonus": "Bonus d'installation",
+    "InstallationPenalty": "Malus d'installation",
+    
+    "Recovery": "Récupération",
+    "RecoveryTime": "Temps de récupération",
+    "RecoveryWeeks": "semaines",
+    "RecoveryPenalty": "Toutes les actions à [-] pendant la récupération",
+    
+    "SlicksocketRequired": "Slicksocket requis",
+    "SlicksocketMissing": "Slicksocket manquant pour installer du Slickware",
+    "HasSlicksocket": "Possède une Slicksocket",
+    
+    "CustomCybermod": "Cybermod personnalisé",
+    "CustomCost": "Coût personnalisé (10x le coût de base)",
+    "ArmorSlots": "Emplacements d'armure",
+    "WeaponSlots": "Emplacements d'arme",
+    
+    "Harvesting": "Récolte",
+    "HarvestMod": "Récolter le mod",
+    "HarvestSuccess": "Récolte réussie",
+    "HarvestFailure": "Échec de la récolte",
+    "HarvestChance": "Chance de récolte: 15%",
+    
+    "Rules": {
+      "Title": "Règles des Cybermods",
+      "Overview": "Il existe deux types de CYBERMODS (MODS) : CYBERWARE et SLICKWARE. Le cyberware est du matériel cybernétique physiquement installé qui augmente votre corps. Le slickware est un logiciel que vous installez dans votre cerveau via une Slicksocket.",
+      
+      "Slots": "Chaque personnage a un certain nombre d'EMPLACEMENTS qu'il peut utiliser pour installer des mods. Pour chaque 10 points de Force (arrondi vers le bas), ils peuvent installer 1 pièce de cyberware. Pour chaque 10 points d'Intellect (arrondi vers le bas), ils peuvent installer 1 emplacement de slickware à condition qu'ils aient une Slicksocket.",
+      
+      "CyberwareInstallation": "Installer du Cyberware : Nécessite un Jet de Corps [+] dans un établissement professionnel comme The Chop Shop. Échec signifie que le mod est installé mais le personnage subit Xd10 dégâts où X est le nombre d'emplacements installés. De plus, ils gagnent un Dysfonctionnement. Échec Critique signifie que leur corps rejette l'implant et ils doivent lancer pour une Mutation ainsi qu'un Jet de Panique comme d'habitude. Succès Critique réduit le Stress de 1d5 en plus d'une installation réussie.",
+      
+      "SlickwareInstallation": "Installer du Slickware : Nécessite un Jet de Sanité [+] dans une Slickbay professionnelle comme The Ice Box. Échec signifie que le mod est installé mais le personnage gagne du Stress égal au nombre d'emplacements installés. Échec Critique signifie que leur cerveau ne s'adapte pas au nouveau logiciel et ils réduisent leur Sanité des emplacements du slickware, lancent pour un Dysfonctionnement, et font un Jet de Panique. Succès Critique réduit le Stress de 1d5 en plus d'une installation réussie.",
+      
+      "AmateurInstallation": "Installation Amateur : Les mods installés par des amateurs sont à [-], cependant, si l'installateur a une Compétence pertinente, le patient peut ajouter la Compétence de l'installateur à leur Jet.",
+      
+      "Recovery": "Récupération : Prend 1 semaine/emplacement installé (doublé pour les installations amateurs). Toutes les actions sont à [-] pendant la récupération.",
+      
+      "CustomMods": "Cybermods Personnalisés : Au-delà des mods listés, les joueurs peuvent installer n'importe quelle arme, armure ou pièce d'équipement à 10x le coût de base de l'objet. L'armure prend 1 emplacement pour chaque 2 Points d'Armure. Les pistolets prennent 1 emplacement et les fusils en prennent 2. Tout ce qui est plus gros qu'un fusil prend 3 ou plus.",
+      
+      "Overclocking": "Surcadencement : Si un joueur veut installer plus de mods qu'il n'a d'emplacements, ou si par une réduction de leurs Stats ils perdent des emplacements alloués à des mods existants, ils deviennent Surcadencés. Pour chaque mod installé au-delà de leur limite d'emplacements, ils augmentent leur Niveau de Surcadencement de 1 et subissent les effets cumulatifs. De plus, tout mod Surcadencé coûte deux fois plus cher en raison du risque d'installation, et les Jets de Corps faits pendant l'installation sont à [-].",
+      
+      "Harvesting": "Récolte : Les mods peuvent être achetés, vendus et volés. Retirer (ou 'récolter') un mod d'un hôte vivant et consentant nécessite un Jet d'Intellect (Chirurgie, Bricolage, ou Cybernétique) du récolteur et un Jet de Corps de l'hôte. Échec d'un jet inflige Xd10 dégâts au patient où X est égal aux emplacements du mod, mais le mod est retiré. Échec des deux jets inflige Xd10 dégâts et le mod reste attaché. Échec Critique sur l'un ou l'autre jet conduit à un Jet de Panique Cybermod. À moins que des soins extrêmes ne soient pris quand les dégâts sont faits, il n'y a que 15% de chance que quiconque tué au combat ait des mods récoltables."
+    },
+    
+    "OverclockLevels": {
+      "1": "Stress minimum augmenté de +1.",
+      "2": "Troublant. Gagnez la Réponse Traumatique de l'androïde : vous causez maintenant aux autres dans votre voisinage de gagner [-] sur les Jets de Peur. Les androïdes donnent maintenant à tous autour d'eux 1 Stress chaque fois qu'ils échouent un Jet de Peur.",
+      "3": "Stress minimum augmenté de +2.",
+      "4": "Retiré. Vous ne faites plus de Jets de Peur. Vous ne faites plus de Tests de Panique pour voir d'autres mourir, pour voir d'autres Paniquer, ou pour vous sentir désespéré.",
+      "5": "Moins qu'humain. La machine a le contrôle. Le Gardien prend le contrôle de votre personnage."
+    },
+    
+    "TableResults": {
+      "CybermodPanic": "Résultat de Panique Cybermod",
+      "CybermodMalfunction": "Dysfonctionnement Cybermod",
+      "CybermodOverclock": "Niveau de Surcadencement"
+    },
+    
+    "Dialogs": {
+      "SelectItem": "Sélectionner un objet à convertir",
+      "SelectItemToInstall": "Sélectionner l'objet à installer comme {type}",
+      "NoItemsAvailable": "Aucun objet disponible pour l'installation",
+      "ConfirmInstallation": "Confirmer l'installation de {item} comme {type}?",
+      "ConfirmRemoval": "Confirmer la suppression de {item}?",
+      "InstallationCost": "Coût d'installation: {cost} cr",
+      "InstallationTime": "Temps d'installation: {time}",
+      "Cancel": "Annuler",
+      "Confirm": "Confirmer"
+    },
+    
+    "Notifications": {
+      "ModuleLoaded": "Module Pound of Flesh chargé avec succès",
+      "CyberwareInstalled": "{item} installé comme cyberware",
+      "SlickwareInstalled": "{item} installé comme slickware", 
+      "ModRemoved": "{item} retiré",
+      "InsufficientSlots": "Emplacements insuffisants - surcadencement requis",
+      "SlicksocketRequired": "Slicksocket requis pour installer du slickware",
+      "InstallationComplete": "Installation terminée",
+      "RemovalComplete": "Suppression terminée"
+    },
+    
+    "Compendiums": {
+      "Cyberware": "Cyberware",
+      "Slickware": "Slickware", 
+      "Tables": "Tables Pound of Flesh"
+    },
+
+    "CyberProperties": "Propriétés Cyber",
+    "IsCyber": "Est un objet cyber",
+    "Prerequisites": "Prérequis",
+    "PrerequisitesPlaceholder": "Ex: interface neurale, bras cybernétique",
+    "StressCost": "Coût en Stress",
+    "BodyCheck": "Test de Corps requis",
+    "MedicalCheck": "Test médical requis", 
+    "SurgicalProcedure": "Procédure chirurgicale",
+    "Overclock": "Surcadencement",
+    "CurrentLevel": "Niveau actuel",
+    "MaxLevel": "Niveau max",
+    "OverclockStress": "Stress surcadencement"
+  }
+}

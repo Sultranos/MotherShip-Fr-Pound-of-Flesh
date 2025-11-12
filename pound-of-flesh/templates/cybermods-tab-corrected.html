@@ -1,0 +1,221 @@
+{{!-- Cybermods Tab Content - CORRECTED MOTHERSHIP-FR STYLE --}}
+<div class="tab cybermods" data-group="primary" data-tab="cyber">
+  
+  {{!-- Slots Information (style santé/stress) --}}
+  <div class="slots-info" style="padding: 10px; margin-bottom: 15px;">
+    <div class="slots-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      
+      {{!-- Cyberware Slots (style Health) --}}
+      <div class="resource healthspread minmaxtopstat">
+        <label for="cyberSlots.used" class="resource-label minmaxtext">
+          <i class="fas fa-cog"></i> {{ localize 'POUNDOFFLESH.Cyberware' }}
+        </label>
+
+        <div class="minmaxwrapper">
+          <input class="maxhealth-input darkGreyText" type="text" name="cyberSlots.used" value="{{cyberSlots.used}}"
+            data-dtype="Number" readonly />
+          <div class="slant"></div>
+          <input class="maxhealth-input darkGreyText" type="text" name="cyberSlots.max"
+            value="{{cyberSlots.max}}" data-dtype="Number" readonly />
+        </div>
+
+        <div class="healthmaxtext">{{ localize 'POUNDOFFLESH.Used' }}</div>
+        <div class="healthmaxtext">{{ localize 'POUNDOFFLESH.Maximum' }}</div>
+        
+        {{#if (gt cyberSlots.used cyberSlots.max)}}
+        <div class="overloaded" style="color: var(--mosh-error); font-size: 12px; margin-top: 4px; grid-column: span 2; text-align: center;">
+          <i class="fas fa-exclamation-triangle"></i> {{ localize 'POUNDOFFLESH.Overclocked' }}
+        </div>
+        {{/if}}
+      </div>
+
+      {{!-- Slickware Slots (style Health identique à Cyberware) --}}
+      {{#if slickSlots.hasSocket}}
+      <div class="resource healthspread minmaxtopstat">
+        <label for="slickSlots.used" class="resource-label minmaxtext">
+          <i class="fas fa-brain"></i> {{ localize 'POUNDOFFLESH.Slickware' }}
+        </label>
+
+        <div class="minmaxwrapper">
+          <input class="maxhealth-input darkGreyText" type="text" name="slickSlots.used" value="{{slickSlots.used}}"
+            data-dtype="Number" readonly />
+          <div class="slant"></div>
+          <input class="maxhealth-input darkGreyText" type="text" name="slickSlots.max"
+            value="{{slickSlots.max}}" data-dtype="Number" readonly />
+        </div>
+
+        <div class="healthmaxtext">{{ localize 'POUNDOFFLESH.Used' }}</div>
+        <div class="healthmaxtext">{{ localize 'POUNDOFFLESH.Maximum' }}</div>
+        
+        {{#if (gt slickSlots.used slickSlots.max)}}
+        <div class="overloaded" style="color: var(--mosh-error); font-size: 12px; margin-top: 4px; grid-column: span 2; text-align: center;">
+          <i class="fas fa-exclamation-triangle"></i> {{ localize 'POUNDOFFLESH.Overclocked' }}
+        </div>
+        {{/if}}
+      </div>
+      {{else}}
+      <div class="resource healthspread minmaxtopstat" style="opacity: 0.5;">
+        <label for="slickSlots.used" class="resource-label minmaxtext">
+          <i class="fas fa-brain"></i> {{ localize 'POUNDOFFLESH.Slickware' }}
+        </label>
+
+        <div class="minmaxwrapper">
+          <input class="maxhealth-input darkGreyText" type="text" value="0" data-dtype="Number" readonly />
+          <div class="slant"></div>
+          <input class="maxhealth-input darkGreyText" type="text" value="0" data-dtype="Number" readonly />
+        </div>
+
+        <div class="healthmaxtext">{{ localize 'POUNDOFFLESH.Used' }}</div>
+        <div class="healthmaxtext">{{ localize 'POUNDOFFLESH.Maximum' }}</div>
+        
+        <div class="no-socket" style="color: var(--mosh-error); font-size: 12px; margin-top: 4px; grid-column: span 2; text-align: center;">
+          <i class="fas fa-times"></i> {{ localize 'POUNDOFFLESH.SlicksocketMissing' }}
+        </div>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+
+  {{!-- CYBERWARE Section (style items de Mothership-Fr) --}}
+  <ol class="items-list" role="table">
+    <li class="item flexrow item-header" role="rowgroup">
+      <div class="item-image" role="cell"></div>
+      <div class="skill-stat" style="flex-grow: 2.5;" role="cell">{{ localize 'POUNDOFFLESH.Cyberware' }}</div>
+      <div class="skill-stat" role="cell">Slots</div>
+      <div class="skill-stat" role="cell">Coût</div>
+      <div class="skill-stat" role="cell">Installé</div>
+      <div class="item-controls" role="cell">
+        <a class="item-control item-create cyber-add" title="{{ localize 'POUNDOFFLESH.InstallCyberware' }}" data-type="item" data-cyber-type="cyberware">
+          <i class="fas fa-plus"></i> Ajouter
+        </a>
+      </div>
+    </li>
+    {{#each cyberware as |item id|}}
+    <li class="item flexrow dropitem" data-item-id="{{item._id}}" role="rowgroup" draggable="true">
+      <div class="item-image" role="cell">
+        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+      </div>
+      <h4 class="skill-name list-roll description-roll" style="flex-grow: 2.5;" role="cell">{{item.name}}</h4>
+      <div class="skill-stat" role="cell">{{#if item.system.cyberSlots}}{{item.system.cyberSlots}}{{else}}1{{/if}}</div>
+      <div class="skill-stat" role="cell">{{#if item.system.cost}}{{item.system.cost}}cr{{else}}0cr{{/if}}</div>
+      <div class="skill-stat item-installed" role="cell">
+        {{#if item.system.installed}}
+          <i class="fas fa-check installed-icon"></i>
+        {{else}}
+          <i class="fas fa-times not-installed-icon"></i>
+        {{/if}}
+      </div>
+      <div class="item-controls" role="cell">
+        <a class="item-control item-edit" title="Modifier Cyberware"><i class="fas fa-edit"></i></a>
+        <a class="item-control item-delete" title="Supprimer Cyberware"><i class="fas fa-trash"></i></a>
+        {{#if item.system.canOverclock}}
+        <a class="item-control item-overclock" title="{{ localize 'POUNDOFFLESH.Overclocked' }}">
+          <i class="fas fa-bolt"></i>
+        </a>
+        {{/if}}
+        {{#unless item.system.installed}}
+        <a class="item-control item-install" title="Installer" data-cyber-type="cyberware">
+          <i class="fas fa-wrench"></i>
+        </a>
+        {{/unless}}
+      </div>
+    </li>
+    {{/each}}
+  </ol>
+
+  {{!-- SLICKWARE Section (style items de Mothership-Fr) --}}
+  <ol class="items-list" role="table" style="margin-top: 20px;">
+    <li class="item flexrow item-header" role="rowgroup">
+      <div class="item-image" role="cell"></div>
+      <div class="skill-stat" style="flex-grow: 2.5;" role="cell">{{ localize 'POUNDOFFLESH.Slickware' }}</div>
+      <div class="skill-stat" role="cell">Slots</div>
+      <div class="skill-stat" role="cell">Coût</div>
+      <div class="skill-stat" role="cell">Installé</div>
+      <div class="item-controls" role="cell">
+        <a class="item-control item-create cyber-add" title="{{ localize 'POUNDOFFLESH.InstallSlickware' }}" data-type="item" data-cyber-type="slickware" {{#unless slickSlots.hasSocket}}style="opacity: 0.5; pointer-events: none;"{{/unless}}>
+          <i class="fas fa-plus"></i> Ajouter
+        </a>
+      </div>
+    </li>
+    {{#each slickware as |item id|}}
+    <li class="item flexrow dropitem" data-item-id="{{item._id}}" role="rowgroup" draggable="true">
+      <div class="item-image" role="cell">
+        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+      </div>
+      <h4 class="skill-name list-roll description-roll" style="flex-grow: 2.5;" role="cell">{{item.name}}</h4>
+      <div class="skill-stat" role="cell">{{#if item.system.slickSlots}}{{item.system.slickSlots}}{{else}}1{{/if}}</div>
+      <div class="skill-stat" role="cell">{{#if item.system.cost}}{{item.system.cost}}cr{{else}}0cr{{/if}}</div>
+      <div class="skill-stat item-installed" role="cell">
+        {{#if item.system.installed}}
+          <i class="fas fa-check installed-icon"></i>
+        {{else}}
+          <i class="fas fa-times not-installed-icon"></i>
+        {{/if}}
+      </div>
+      <div class="item-controls" role="cell">
+        <a class="item-control item-edit" title="Modifier Slickware"><i class="fas fa-edit"></i></a>
+        <a class="item-control item-delete" title="Supprimer Slickware"><i class="fas fa-trash"></i></a>
+        {{#if item.system.canOverclock}}
+        <a class="item-control item-overclock" title="{{ localize 'POUNDOFFLESH.Overclocked' }}">
+          <i class="fas fa-bolt"></i>
+        </a>
+        {{/if}}
+        {{#unless item.system.installed}}
+        <a class="item-control item-install" title="Installer" data-cyber-type="slickware">
+          <i class="fas fa-wrench"></i>
+        </a>
+        {{/unless}}
+      </div>
+    </li>
+    {{/each}}
+  </ol>
+
+  {{!-- Regular Items with Cyber flag (si applicable) --}}
+  {{#if cyberItems}}
+  <ol class="items-list" role="table" style="margin-top: 20px;">
+    <li class="item flexrow item-header" role="rowgroup">
+      <div class="item-image" role="cell"></div>
+      <div class="skill-stat" style="flex-grow: 2.5;" role="cell">{{ localize 'POUNDOFFLESH.CustomCybermod' }}</div>
+      <div class="skill-stat" role="cell">Quantité</div>
+      <div class="skill-stat" role="cell">Valeur</div>
+      <div class="item-controls" role="cell"></div>
+    </li>
+    {{#each cyberItems as |item id|}}
+    <li class="item flexrow dropitem" data-item-id="{{item._id}}" role="rowgroup" draggable="true">
+      <div class="item-image" role="cell">
+        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+      </div>
+      <h4 class="skill-name list-roll description-roll" style="flex-grow: 2.5;" role="cell">{{item.name}}</h4>
+      <div class="skill-stat list-roll item-quantity" role="cell">{{item.system.quantity}}</div>
+      <div class="skill-stat" role="cell">{{item.system.cost}}</div>
+      <div class="item-controls" role="cell">
+        <a class="item-control item-edit" title="Modifier Objet"><i class="fas fa-edit"></i></a>
+        <a class="item-control item-delete" title="Supprimer Objet"><i class="fas fa-trash"></i></a>
+        <a class="item-control item-install" title="Installer comme Cybermod">
+          <i class="fas fa-wrench"></i>
+        </a>
+      </div>
+    </li>
+    {{/each}}
+  </ol>
+  {{/if}}
+
+  {{!-- Empty State --}}
+  {{#unless (or cyberware slickware cyberItems)}}
+  <div class="empty-state" style="text-align: center; padding: 40px; color: var(--mosh-muted);">
+    <i class="fas fa-microchip" style="font-size: 48px; margin-bottom: 15px; opacity: 0.3;"></i>
+    <p>{{ localize 'POUNDOFFLESH.Empty' }}</p>
+    <p style="font-size: 12px;">Ajoutez votre premier cybermod pour commencer</p>
+    
+    <div style="margin-top: 20px;">
+      <a class="item-control item-create cyber-add" data-type="item" data-cyber-type="cyberware">
+        <i class="fas fa-plus"></i> {{ localize 'POUNDOFFLESH.InstallCyberware' }}
+      </a>
+      <a class="item-control item-create cyber-add" data-type="item" data-cyber-type="slickware" {{#unless slickSlots.hasSocket}}style="opacity: 0.5; pointer-events: none;"{{/unless}}>
+        <i class="fas fa-plus"></i> {{ localize 'POUNDOFFLESH.InstallSlickware' }}
+      </a>
+    </div>
+  </div>
+  {{/unless}}
+
+</div>
