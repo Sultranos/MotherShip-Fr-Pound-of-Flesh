@@ -1,0 +1,805 @@
+/* Pound of Flesh Module Styles - CORRECTED MOTHERSHIP-FR STYLE */
+
+/* === Variables Couleurs Mothership-Fr === */
+:root {
+    --mosh-primary: #000;           /* Noir principal */
+    --mosh-secondary: #fff;         /* Blanc */
+    --mosh-success: #18520b;        /* Vert foncé */
+    --mosh-error: #aa0200;          /* Rouge foncé */
+    --mosh-muted: #666;             /* Gris */
+    --mosh-light-grey: #ccc;        /* Gris clair */
+    --mosh-background: rgba(0,0,0,0.02); /* Fond très léger */
+}
+
+/* === General Module Styles === */
+.pound-of-flesh-dialog {
+  font-family: inherit;
+  color: var(--mosh-primary);
+}
+
+/* === Cyber Tab - STYLE MOTHERSHIP-FR === */
+.cyber-tab-content {
+    padding: 15px;
+    color: var(--mosh-primary);
+    background: var(--mosh-secondary);
+}
+
+.cyber-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--mosh-muted);
+    padding-bottom: 8px;
+}
+
+.cyber-header h3 {
+    margin: 0;
+    color: var(--mosh-primary);
+    font-weight: bold;
+}
+
+.cyber-header i {
+    color: var(--mosh-muted);
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+/* === Cybermods Tab === */
+.cybermods {
+  padding: 15px;
+  background: var(--mosh-background);
+  border: 1px solid var(--mosh-muted);
+  border-radius: 3px;
+  color: var(--mosh-primary);
+}
+
+.cybermods-header {
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--mosh-muted);
+  padding-bottom: 10px;
+}
+
+.cybermods-header h3 {
+  margin: 0;
+  color: var(--mosh-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.cybermods-header h3 i {
+  color: var(--mosh-muted);
+}
+
+/* === Overclock Warning - STYLE MOTHERSHIP-FR === */
+.overclock-warning {
+  background: rgba(170, 2, 0, 0.1);
+  border: 1px solid var(--mosh-error);
+  border-radius: 3px;
+  padding: 10px;
+  margin: 10px 0;
+  color: var(--mosh-error);
+  font-weight: bold;
+  animation: subtle-pulse 3s infinite;
+}
+
+.overclock-warning i {
+  margin-right: 5px;
+}
+
+@keyframes subtle-pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+/* === Form Elements - STYLE MOTHERSHIP-FR === */
+.cyber-tab-content .form-group {
+    margin-bottom: 15px;
+    border: 1px solid var(--mosh-muted);
+    padding: 10px;
+    border-radius: 3px;
+    background: var(--mosh-background);
+}
+
+.cyber-tab-content .form-group label {
+    color: var(--mosh-primary);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.cyber-tab-content input[type="text"],
+.cyber-tab-content input[type="number"],
+.cyber-tab-content select,
+.cyber-tab-content textarea {
+    background: var(--mosh-secondary);
+    border: 1px solid var(--mosh-muted);
+    color: var(--mosh-primary);
+    border-radius: 3px;
+    padding: 5px 8px;
+    width: 100%;
+}
+
+.cyber-tab-content input[type="text"]:focus,
+.cyber-tab-content input[type="number"]:focus,
+.cyber-tab-content select:focus {
+    border-color: var(--mosh-primary);
+    outline: none;
+}
+
+.cyber-tab-content input[type="checkbox"] {
+    accent-color: var(--mosh-primary);
+}
+
+.cyber-tab-content .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--mosh-primary);
+}
+
+/* === Installation Section === */
+.cyber-installation {
+    border: 1px solid var(--mosh-muted);
+    border-radius: 3px;
+    padding: 15px;
+    margin: 15px 0;
+    background: rgba(0,0,0,0.03);
+}
+
+.cyber-installation h4 {
+    margin: 0 0 15px 0;
+    color: var(--mosh-primary);
+    border-bottom: 1px solid var(--mosh-muted);
+    padding-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* === Overclock Section === */
+.cyber-overclock {
+    border: 1px solid var(--mosh-muted);
+    border-radius: 3px;
+    padding: 15px;
+    background: rgba(0,0,0,0.05);
+}
+
+.cyber-overclock h4 {
+    margin: 0 0 15px 0;
+    color: var(--mosh-primary);
+    border-bottom: 1px solid var(--mosh-muted);
+    padding-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* === Grid Layouts === */
+.cyber-tab-content .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.cyber-tab-content .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+/* === Help Text === */
+.cyber-tab-content .cyber-info,
+.cyber-tab-content .help-text {
+    font-size: 11px;
+    color: var(--mosh-muted);
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* === Status Icons === */
+.installed-icon {
+    color: var(--mosh-success) !important;
+}
+
+.not-installed-icon {
+    color: var(--mosh-error) !important;
+}
+
+/* === Responsive Design === */
+@media (max-width: 600px) {
+    .cyber-tab-content .grid-2,
+    .cyber-tab-content .grid-3 {
+        grid-template-columns: 1fr;
+    }
+    
+    .slots-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* === Slots Summary === */
+.slots-summary {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.slot-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.slot-row:last-child {
+  margin-bottom: 0;
+}
+
+.slot-row label {
+  font-weight: bold;
+  color: #333;
+}
+
+.slot-count {
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: rgba(0, 200, 0, 0.2);
+  color: #006600;
+}
+
+.slot-count.overclock {
+  background: rgba(255, 0, 0, 0.2);
+  color: #cc0000;
+}
+
+.no-slicksocket {
+  font-size: 0.8em;
+  color: #999;
+  font-style: italic;
+}
+
+/* === Cyberware/Slickware Sections === */
+.cyberware-section,
+.slickware-section {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.section-header {
+  background: linear-gradient(90deg, #0066cc, #004499);
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-header h4 {
+  margin: 0;
+  font-size: 1.1em;
+}
+
+.install-cyberware-btn,
+.install-slickware-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.install-cyberware-btn:hover:not(:disabled),
+.install-slickware-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.install-cyberware-btn:disabled,
+.install-slickware-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* === Mod Lists === */
+.cyberware-list,
+.slickware-list {
+  padding: 10px;
+  background: white;
+}
+
+.no-mods {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  padding: 20px;
+}
+
+.mod-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  background: white;
+  transition: background 0.2s;
+}
+
+.mod-item:hover {
+  background: #f5f5f5;
+}
+
+.mod-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.mod-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.mod-details {
+  flex: 1;
+}
+
+.mod-name {
+  margin: 0;
+  font-size: 1em;
+  color: #333;
+}
+
+.mod-description {
+  margin: 5px 0 0 0;
+  font-size: 0.8em;
+  color: #666;
+  line-height: 1.3;
+}
+
+.mod-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.remove-mod-btn {
+  background: #cc0000;
+  border: none;
+  color: white;
+  padding: 5px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.remove-mod-btn:hover {
+  background: #990000;
+}
+
+/* === Rules Section === */
+.rules-section {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.rules-section summary {
+  background: #f5f5f5;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+  font-weight: bold;
+}
+
+.rules-content {
+  padding: 15px;
+  background: white;
+  line-height: 1.5;
+}
+
+.rules-content h5 {
+  color: #0066cc;
+  margin: 15px 0 5px 0;
+  font-size: 1em;
+}
+
+.rules-content p {
+  margin: 8px 0;
+  text-align: justify;
+}
+
+/* === Item Sheet Modifications === */
+.cybermod-section {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.cybermod-section h3 {
+  background: linear-gradient(90deg, #0066cc, #004499);
+  color: white;
+  margin: 0;
+  padding: 10px;
+  font-size: 1.1em;
+}
+
+.cybermod-options {
+  padding: 10px;
+  background: white;
+}
+
+.cybermod-options .form-group {
+  margin-bottom: 10px;
+}
+
+.cybermod-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.cybermod-options input[type="checkbox"] {
+  margin: 0;
+}
+
+.cybermod-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 8px;
+  background: rgba(0, 200, 0, 0.1);
+  border: 1px solid rgba(0, 200, 0, 0.3);
+  border-radius: 3px;
+  color: #006600;
+  font-weight: bold;
+}
+
+.cybermod-info {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.info-text {
+  margin: 0;
+  font-size: 0.9em;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cybermod-details {
+  padding: 15px;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.slots-info {
+  margin-bottom: 15px;
+}
+
+.slots-info label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.slots-value {
+  background: rgba(0, 0, 200, 0.1);
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.installation-info {
+  margin-bottom: 15px;
+}
+
+.installation-info h4 {
+  color: #0066cc;
+  margin: 0 0 8px 0;
+}
+
+.custom-cost-info {
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.custom-cost-info h4 {
+  color: #0066cc;
+  margin: 0 0 10px 0;
+}
+
+.cost-breakdown {
+  margin-bottom: 10px;
+}
+
+.cost-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.cost-row.custom-total {
+  font-weight: bold;
+  color: #0066cc;
+  border-top: 1px solid #eee;
+  padding-top: 5px;
+}
+
+.cost-note {
+  margin: 10px 0 0 0;
+  font-size: 0.85em;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* === Installation Dialog === */
+.installation-dialog {
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.dialog-header {
+  background: linear-gradient(90deg, #0066cc, #004499);
+  color: white;
+  padding: 15px;
+  margin: -10px -10px 15px -10px;
+}
+
+.dialog-header h2 {
+  margin: 0 0 5px 0;
+  font-size: 1.3em;
+}
+
+.dialog-subtitle {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.9em;
+}
+
+.dialog-content {
+  padding: 0 5px;
+}
+
+.item-selection h3,
+.installation-details h3,
+.risk-assessment h3 {
+  color: #0066cc;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 5px;
+  margin: 20px 0 15px 0;
+}
+
+/* === Item Grid === */
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.item-option {
+  position: relative;
+}
+
+.item-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.item-card {
+  display: block;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: white;
+}
+
+.item-card:hover {
+  border-color: #0066cc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item-option input[type="radio"]:checked + .item-card {
+  border-color: #0066cc;
+  background: rgba(0, 102, 204, 0.1);
+}
+
+.item-image {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+
+.item-name {
+  margin: 0 0 5px 0;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #333;
+}
+
+.item-type {
+  margin: 0 0 5px 0;
+  font-size: 0.8em;
+  color: #666;
+  text-transform: capitalize;
+}
+
+.item-description {
+  margin: 0;
+  font-size: 0.75em;
+  color: #777;
+  line-height: 1.3;
+  max-height: 40px;
+  overflow: hidden;
+}
+
+/* === Requirements and Options === */
+.requirements ul,
+.installation-options {
+  margin: 10px 0;
+}
+
+.requirements li {
+  margin-bottom: 5px;
+}
+
+.option-group {
+  margin-bottom: 10px;
+}
+
+.option-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.option-description {
+  font-size: 0.85em;
+  color: #666;
+  font-style: italic;
+}
+
+/* === Risk Assessment === */
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.risk-outcome {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.risk-outcome.success {
+  border-color: #00cc00;
+  background: rgba(0, 200, 0, 0.05);
+}
+
+.risk-outcome.critical-success {
+  border-color: #0066cc;
+  background: rgba(0, 100, 200, 0.05);
+}
+
+.risk-outcome.failure {
+  border-color: #ff6600;
+  background: rgba(255, 100, 0, 0.05);
+}
+
+.risk-outcome.critical-failure {
+  border-color: #cc0000;
+  background: rgba(200, 0, 0, 0.05);
+}
+
+.risk-outcome h4 {
+  margin: 0 0 8px 0;
+  font-size: 0.9em;
+}
+
+.risk-outcome p {
+  margin: 0;
+  font-size: 0.8em;
+  line-height: 1.4;
+}
+
+/* === Dialog Footer === */
+.dialog-footer {
+  margin: 20px -10px -10px -10px;
+  padding: 15px;
+  background: #f5f5f5;
+  border-top: 1px solid #ddd;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancel-btn,
+.install-btn {
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.cancel-btn {
+  background: #999;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: #777;
+}
+
+.install-btn {
+  background: #0066cc;
+  color: white;
+}
+
+.install-btn:hover:not(:disabled) {
+  background: #0052a3;
+}
+
+.install-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* === Responsive Design === */
+@media (max-width: 600px) {
+  .item-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .risk-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  
+  .mod-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  
+  .slot-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+  }
+}

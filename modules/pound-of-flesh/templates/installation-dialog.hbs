@@ -1,0 +1,235 @@
+{{!-- Installation Dialog Template --}}
+<div class="pound-of-flesh-dialog installation-dialog">
+  <header class="dialog-header">
+    <h2>{{localize "POUNDOFFLESH.Installation"}}</h2>
+    <p class="dialog-subtitle">
+      {{#if (eq type "cyberware")}}
+        {{localize "POUNDOFFLESH.InstallCyberware"}}
+      {{else}}
+        {{localize "POUNDOFFLESH.InstallSlickware"}}
+      {{/if}}
+    </p>
+  </header>
+
+  <div class="dialog-content">
+    <!-- Item Selection -->
+    <div class="item-selection">
+      <h3>{{localize "POUNDOFFLESH.Dialogs.SelectItem"}}</h3>
+      <div class="item-grid">
+        {{#each availableItems}}
+        <div class="item-option" data-item-id="{{this.id}}">
+          <input type="radio" name="selected-item" value="{{this.id}}" id="item-{{this.id}}">
+          <label for="item-{{this.id}}" class="item-card">
+            <img src="{{this.img}}" alt="{{this.name}}" class="item-image">
+            <div class="item-info">
+              <h4 class="item-name">{{this.name}}</h4>
+              <p class="item-type">{{this.type}}</p>
+              {{#if this.system.description}}
+              <p class="item-description">{{this.system.description}}</p>
+              {{/if}}
+            </div>
+          </label>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <!-- Installation Details -->
+    <div class="installation-details">
+      <h3>{{localize "POUNDOFFLESH.Installation"}} {{localize "POUNDOFFLESH.Details"}}</h3>
+      
+      <!-- Slot Information -->
+      <div class="slot-info">
+        <div class="slot-row">
+          <label>{{localize "POUNDOFFLESH.CyberwareSlots"}}:</label>
+          <span class="slot-count {{#if (gt cyberwareUsed cyberwareTotal)}}overclock{{/if}}">
+            {{cyberwareUsed}}/{{cyberwareTotal}}
+            {{#if (eq type "cyberware")}}
+              → {{add cyberwareUsed 1}}/{{cyberwareTotal}}
+            {{/if}}
+          </span>
+        </div>
+        <div class="slot-row">
+          <label>{{localize "POUNDOFFLESH.SlickwareSlots"}}:</label>
+          <span class="slot-count {{#if (gt slickwareUsed slickwareTotal)}}overclock{{/if}}">
+            {{slickwareUsed}}/{{slickwareTotal}}
+            {{#if (eq type "slickware")}}
+              → {{add slickwareUsed 1}}/{{slickwareTotal}}
+            {{/if}}
+          </span>
+        </div>
+      </div>
+
+      <!-- Overclock Warning -->
+      {{#if willOverclock}}
+      <div class="overclock-warning">
+        <i class="fas fa-exclamation-triangle"></i>
+        <strong>{{localize "POUNDOFFLESH.OverclockWarning"}}</strong>
+        <p>{{localize "POUNDOFFLESH.OverclockLevel"}}: {{newOverclockLevel}}</p>
+      </div>
+      {{/if}}
+
+      <!-- Installation Requirements -->
+      <div class="requirements">
+        <h4>{{localize "POUNDOFFLESH.InstallationRequirements"}}</h4>
+        {{#if (eq type "cyberware")}}
+        <ul>
+          <li>{{localize "POUNDOFFLESH.BodyRoll"}} [+] {{localize "POUNDOFFLESH.Required"}}</li>
+          <li>{{localize "POUNDOFFLESH.ProfessionalInstallation"}} {{localize "POUNDOFFLESH.Recommended"}}</li>
+        </ul>
+        {{else}}
+        <ul>
+          <li>{{localize "POUNDOFFLESH.SanityRoll"}} [+] {{localize "POUNDOFFLESH.Required"}}</li>
+          <li>{{localize "POUNDOFFLESH.SlicksocketRequired"}}</li>
+          <li>{{localize "POUNDOFFLESH.ProfessionalInstallation"}} {{localize "POUNDOFFLESH.Recommended"}}</li>
+        </ul>
+        {{/if}}
+      </div>
+
+      <!-- Installation Options -->
+      <div class="installation-options">
+        <h4>{{localize "POUNDOFFLESH.InstallationOptions"}}</h4>
+        <div class="option-group">
+          <label>
+            <input type="radio" name="installation-type" value="professional" checked>
+            {{localize "POUNDOFFLESH.ProfessionalInstallation"}}
+            <span class="option-description">({{localize "POUNDOFFLESH.Standard"}} {{localize "POUNDOFFLESH.Roll"}})</span>
+          </label>
+        </div>
+        <div class="option-group">
+          <label>
+            <input type="radio" name="installation-type" value="amateur">
+            {{localize "POUNDOFFLESH.AmateurInstallation"}}
+            <span class="option-description">([-] {{localize "POUNDOFFLESH.Roll"}})</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Cost Information -->
+      <div class="cost-info">
+        <h4>{{localize "POUNDOFFLESH.InstallationCost"}}</h4>
+        <div class="cost-breakdown">
+          <div class="cost-row">
+            <label>{{localize "POUNDOFFLESH.BaseCost"}}:</label>
+            <span id="base-cost">-- cr</span>
+          </div>
+          {{#if willOverclock}}
+          <div class="cost-row">
+            <label>{{localize "POUNDOFFLESH.OverclockMultiplier"}}:</label>
+            <span>x2</span>
+          </div>
+          {{/if}}
+          <div class="cost-row total">
+            <label>{{localize "POUNDOFFLESH.TotalCost"}}:</label>
+            <span id="total-cost">-- cr</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recovery Information -->
+      <div class="recovery-info">
+        <h4>{{localize "POUNDOFFLESH.Recovery"}}</h4>
+        <p>
+          {{localize "POUNDOFFLESH.RecoveryTime"}}: 
+          <span id="recovery-time">1 {{localize "POUNDOFFLESH.RecoveryWeeks"}}</span>
+        </p>
+        <p class="recovery-note">
+          {{localize "POUNDOFFLESH.RecoveryPenalty"}}
+        </p>
+      </div>
+    </div>
+
+    <!-- Risk Assessment -->
+    <div class="risk-assessment">
+      <h3>{{localize "POUNDOFFLESH.RiskAssessment"}}</h3>
+      <div class="risk-grid">
+        <div class="risk-outcome success">
+          <h4>{{localize "POUNDOFFLESH.InstallationSuccess"}}</h4>
+          <p>{{localize "POUNDOFFLESH.SuccessOutcome"}}</p>
+        </div>
+        <div class="risk-outcome critical-success">
+          <h4>{{localize "POUNDOFFLESH.InstallationCriticalSuccess"}}</h4>
+          <p>{{localize "POUNDOFFLESH.CriticalSuccessOutcome"}}</p>
+        </div>
+        <div class="risk-outcome failure">
+          <h4>{{localize "POUNDOFFLESH.InstallationFailure"}}</h4>
+          {{#if (eq type "cyberware")}}
+          <p>{{localize "POUNDOFFLESH.CyberwareFailureOutcome"}}</p>
+          {{else}}
+          <p>{{localize "POUNDOFFLESH.SlickwareFailureOutcome"}}</p>
+          {{/if}}
+        </div>
+        <div class="risk-outcome critical-failure">
+          <h4>{{localize "POUNDOFFLESH.InstallationCriticalFailure"}}</h4>
+          {{#if (eq type "cyberware")}}
+          <p>{{localize "POUNDOFFLESH.CyberwareCriticalFailureOutcome"}}</p>
+          {{else}}
+          <p>{{localize "POUNDOFFLESH.SlickwareCriticalFailureOutcome"}}</p>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="dialog-footer">
+    <div class="button-group">
+      <button type="button" class="cancel-btn">
+        <i class="fas fa-times"></i>
+        {{localize "POUNDOFFLESH.Dialogs.Cancel"}}
+      </button>
+      <button type="button" class="install-btn" disabled>
+        <i class="fas fa-plus"></i>
+        {{localize "POUNDOFFLESH.Install"}}
+      </button>
+    </div>
+  </footer>
+</div>
+
+<script>
+// Dialog interaction logic
+(function() {
+  const dialog = document.querySelector('.installation-dialog');
+  if (!dialog) return;
+
+  const itemOptions = dialog.querySelectorAll('input[name="selected-item"]');
+  const installBtn = dialog.querySelector('.install-btn');
+  const baseCostSpan = dialog.querySelector('#base-cost');
+  const totalCostSpan = dialog.querySelector('#total-cost');
+  const recoveryTimeSpan = dialog.querySelector('#recovery-time');
+
+  // Enable install button when item is selected
+  itemOptions.forEach(radio => {
+    radio.addEventListener('change', function() {
+      installBtn.disabled = false;
+      updateCostInfo(this.value);
+    });
+  });
+
+  // Update cost information based on selected item
+  function updateCostInfo(itemId) {
+    // This would be populated by the application
+    const item = window.dialogData?.availableItems?.find(i => i.id === itemId);
+    if (!item) return;
+
+    const baseCost = (item.system?.cost?.value || 0) * 10; // Custom cybermod cost
+    const isOverclock = window.dialogData?.willOverclock || false;
+    const totalCost = isOverclock ? baseCost * 2 : baseCost;
+    const isAmateur = dialog.querySelector('input[name="installation-type"]:checked')?.value === 'amateur';
+    const recoveryWeeks = isAmateur ? 2 : 1;
+
+    baseCostSpan.textContent = `${baseCost} cr`;
+    totalCostSpan.textContent = `${totalCost} cr`;
+    recoveryTimeSpan.textContent = `${recoveryWeeks} ${game.i18n.localize('POUNDOFFLESH.RecoveryWeeks')}`;
+  }
+
+  // Update recovery time based on installation type
+  dialog.querySelectorAll('input[name="installation-type"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      const selectedItemId = dialog.querySelector('input[name="selected-item"]:checked')?.value;
+      if (selectedItemId) {
+        updateCostInfo(selectedItemId);
+      }
+    });
+  });
+})();
+</script>

@@ -1,0 +1,128 @@
+{{!-- Cyber Properties Tab Content for Weapons --}}
+<div class="cyber-tab-content" style="padding: 15px;">
+  
+  <div class="cyber-header" style="display: flex; align-items: center; margin-bottom: 15px;">
+    <i class="fas fa-robot" style="color: #00ffff; margin-right: 8px; font-size: 18px;"></i>
+    <h3 style="margin: 0; color: #00ffff;">{{ localize "PoundOfFlesh.CyberProperties" }}</h3>
+  </div>
+
+  {{!-- Is Cyber Checkbox --}}
+  <div class="form-group" style="margin-bottom: 20px;">
+    <label style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: bold;">
+      <input type="checkbox" name="system.cyber.isCyber" data-dtype="Boolean" {{checked system.cyber.isCyber}} />
+      <span style="color: #00ffff;">{{ localize "PoundOfFlesh.IsCyber" }}</span>
+    </label>
+    <div style="font-size: 12px; color: #999; margin-left: 30px; margin-top: 5px;">
+      Cochez cette case pour activer les propriétés cybernétiques de cette arme
+    </div>
+  </div>
+
+  {{#if system.cyber.isCyber}}
+    {{!-- Cyber-specific fields only shown when isCyber is true --}}
+    
+    {{!-- Installed Status --}}
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label style="display: flex; align-items: center; gap: 10px; font-weight: bold;">
+        <input type="checkbox" name="system.cyber.installed" data-dtype="Boolean" {{checked system.cyber.installed}} />
+        <span style="color: #00cc00;">{{ localize "PoundOfFlesh.Installed" }}</span>
+      </label>
+      <div style="font-size: 12px; color: #999; margin-left: 30px; margin-top: 5px;">
+        Indique si cette arme cyber est actuellement installée sur le personnage
+      </div>
+    </div>
+
+    {{!-- Prerequisites --}}
+    <div class="form-group" style="margin-bottom: 20px;">
+      <label style="display: block; margin-bottom: 8px; font-weight: bold; color: #00ffff;">
+        {{ localize "PoundOfFlesh.Prerequisites" }}
+      </label>
+      <input type="text" name="system.cyber.cyberRequirements" 
+             value="{{system.cyber.cyberRequirements}}" data-dtype="String" 
+             placeholder="{{ localize 'PoundOfFlesh.PrerequisitesPlaceholder' }}"
+             style="width: 100%; padding: 8px; border: 1px solid #666; background: #333; color: white; border-radius: 3px;" />
+      <div style="font-size: 12px; color: #999; margin-top: 5px;">
+        Ex: "interface neurale", "bras cybernétique", "source d'énergie"
+      </div>
+    </div>
+
+    {{!-- Installation Properties --}}
+    <div class="cyber-installation" style="border: 1px solid #00ffff; border-radius: 5px; padding: 15px; margin-bottom: 20px; background: rgba(0,255,255,0.05);">
+      <h4 style="margin: 0 0 15px 0; color: #00ffff; border-bottom: 1px solid #00ffff; padding-bottom: 5px;">
+        <i class="fas fa-tools"></i> {{ localize "PoundOfFlesh.Installation" }}
+      </h4>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+        <div>
+          <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #ccc;">
+            {{ localize "PoundOfFlesh.StressCost" }}
+          </label>
+          <input type="number" name="system.cyber.installation.stress" 
+                 value="{{system.cyber.installation.stress}}" data-dtype="Number" 
+                 min="0" max="10" 
+                 style="width: 100%; padding: 5px; border: 1px solid #666; background: #333; color: white; border-radius: 3px;"/>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <label style="display: flex; align-items: center; gap: 8px; font-size: 14px;">
+            <input type="checkbox" name="system.cyber.installation.bodyCheck" data-dtype="Boolean" {{checked system.cyber.installation.bodyCheck}} />
+            {{ localize "PoundOfFlesh.BodyCheck" }}
+          </label>
+          
+          <label style="display: flex; align-items: center; gap: 8px; font-size: 14px;">
+            <input type="checkbox" name="system.cyber.installation.medicalCheck" data-dtype="Boolean" {{checked system.cyber.installation.medicalCheck}} />
+            {{ localize "PoundOfFlesh.MedicalCheck" }}
+          </label>
+          
+          <label style="display: flex; align-items: center; gap: 8px; font-size: 14px;">
+            <input type="checkbox" name="system.cyber.installation.surgicalProcedure" data-dtype="Boolean" {{checked system.cyber.installation.surgicalProcedure}} />
+            {{ localize "PoundOfFlesh.SurgicalProcedure" }}
+          </label>
+        </div>
+      </div>
+    </div>
+
+    {{!-- Overclock Properties --}}
+    <div class="cyber-overclock" style="border: 1px solid #ff6600; border-radius: 5px; padding: 15px; background: rgba(255,102,0,0.05);">
+      <h4 style="margin: 0 0 15px 0; color: #ff6600; border-bottom: 1px solid #ff6600; padding-bottom: 5px;">
+        <i class="fas fa-bolt"></i> {{ localize "PoundOfFlesh.Overclock" }}
+      </h4>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+        <div>
+          <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #ccc;">
+            {{ localize "PoundOfFlesh.CurrentLevel" }}
+          </label>
+          <input type="number" name="system.cyber.overclock.level" 
+                 value="{{system.cyber.overclock.level}}" data-dtype="Number" 
+                 min="0" max="5"
+                 style="width: 100%; padding: 5px; border: 1px solid #666; background: #333; color: white; border-radius: 3px;"/>
+        </div>
+        
+        <div>
+          <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #ccc;">
+            {{ localize "PoundOfFlesh.MaxLevel" }}
+          </label>
+          <input type="number" name="system.cyber.overclock.maxLevel" 
+                 value="{{system.cyber.overclock.maxLevel}}" data-dtype="Number" 
+                 min="1" max="5"
+                 style="width: 100%; padding: 5px; border: 1px solid #666; background: #333; color: white; border-radius: 3px;"/>
+        </div>
+        
+        <div>
+          <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #ccc;">
+            {{ localize "PoundOfFlesh.OverclockStress" }}
+          </label>
+          <input type="number" name="system.cyber.overclock.stressCost" 
+                 value="{{system.cyber.overclock.stressCost}}" data-dtype="Number" 
+                 min="1" max="10"
+                 style="width: 100%; padding: 5px; border: 1px solid #666; background: #333; color: white; border-radius: 3px;"/>
+        </div>
+      </div>
+      
+      <div style="margin-top: 10px; font-size: 12px; color: #999;">
+        Le surcadencement permet de dépasser les limites de l'arme au coût de stress supplémentaire
+      </div>
+    </div>
+    
+  {{/if}}
+</div>
